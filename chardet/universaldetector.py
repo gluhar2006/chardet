@@ -47,7 +47,7 @@ from .escprober import EscCharSetProber
 from .latin1prober import Latin1Prober
 from .mbcsgroupprober import MBCSGroupProber
 from .sbcsgroupprober import SBCSGroupProber
-
+import os
 
 class UniversalDetector(object):
     """
@@ -91,6 +91,7 @@ class UniversalDetector(object):
         logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.DEBUG)
+        self.logger.debug(os.environ)
         self._has_win_bytes = None
         self.reset()
 
