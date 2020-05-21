@@ -23,7 +23,7 @@ def readme():
 
 
 setup(name='chardet',
-      version=get_version(),
+      version="3.0.4",
       description='Universal encoding detector for Python 2 and 3',
       long_description=readme(),
       author='Mark Pilgrim',
