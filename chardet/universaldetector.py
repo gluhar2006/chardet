@@ -39,6 +39,7 @@ class a user of ``chardet`` should use.
 import codecs
 import logging
 import re
+import sys
 
 from .charsetgroupprober import CharSetGroupProber
 from .enums import InputState, LanguageFilter, ProbingState
@@ -87,7 +88,9 @@ class UniversalDetector(object):
         self._input_state = None
         self._last_char = None
         self.lang_filter = lang_filter
+        logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
         self.logger = logging.getLogger(__name__)
+        self.logger.setLevel(logging.DEBUG)
         self._has_win_bytes = None
         self.reset()
 
@@ -245,6 +248,8 @@ class UniversalDetector(object):
             max_prober_confidence = 0.0
             max_prober = None
             for prober in self._charset_probers:
+                self.logger.debug(f'>>> charset_name {prober.charset_name}, '
+                                  f'language {prober.language}, confidence {prober.get_confidence()}')
                 if not prober:
                     continue
                 prober_confidence = prober.get_confidence()
