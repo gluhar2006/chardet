@@ -91,7 +91,7 @@ class UniversalDetector(object):
         logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.DEBUG)
-        self.logger.debug(os.environ)
+        self.logger.debug(f'>>> {os.environ}')
         self._has_win_bytes = None
         self.reset()
 
